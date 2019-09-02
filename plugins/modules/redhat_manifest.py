@@ -117,7 +117,7 @@ def fetch_portal(module, path, method, data={}, accept_header='application/json'
     url = module.params['portal'] + path
     headers = {'accept': accept_header,
                'content-type': 'application/json'}
-    resp, info = fetch_url(module, url, json.dumps(data), headers, method)
+    resp, info = fetch_url(module, url, json.dumps(data), headers, method, timeout=30)
     if resp is None:
         try:
             error = json.loads(info['body'])['displayMessage']
